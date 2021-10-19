@@ -7,7 +7,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:background="#673AB7"
-    tools:context=".MainActivity">
+    tools:context=".view.main.MainActivity">
 
     <TextView
         android:id="@+id/tvAppName"
@@ -50,7 +50,8 @@
                 android:gravity="center"
                 android:text="@string/please_enter_your_name"
                 android:textColor="#7a8089"
-                android:textSize="16sp"/>
+                android:textSize="16sp"
+                android:layout_marginTop="20dp"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -59,6 +60,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/name"
