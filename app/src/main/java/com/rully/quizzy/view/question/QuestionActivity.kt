@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.rully.quizzy.R
 import com.rully.quizzy.data.Constants
@@ -31,12 +32,20 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
         binding.tvOption2.setOnClickListener(this)
         binding.tvOption3.setOnClickListener(this)
         binding.tvOption4.setOnClickListener(this)
+        binding.btnSubmit.setOnClickListener(this)
 
     }
 
     private fun setQuestions() {
-        mCurrentPosition = 1
         val question = mQuestionList?.get(mCurrentPosition - 1)
+
+        defaultOptions()
+
+        if (mCurrentPosition == mQuestionList?.size) {
+            binding.btnSubmit.text = getString(R.string.finish)
+        } else {
+            binding.btnSubmit.text = getString(R.string.submit)
+        }
 
         binding.progressBar.progress = mCurrentPosition
         binding.tvProgressBar.text = "$mCurrentPosition" + "/" + binding.progressBar.max
@@ -63,6 +72,49 @@ class QuestionActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.tvOption4 -> {
                 selectedOptions(binding.tvOption4, 4)
+            }
+            R.id.btnSubmit -> {
+                if (mSelectedPosition == 0) {
+                    mCurrentPosition ++
+
+                    when {
+                        mCurrentPosition <= mQuestionList!!.size -> {
+                            setQuestions()
+                        } else -> {
+                            Toast.makeText(this, "You have completed the Quiz", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                } else {
+                    val question = mQuestionList?.get(mCurrentPosition - 1)
+                    if (question?.correct != mSelectedPosition) {
+                        answer(mSelectedPosition, R.drawable.wrong_option_bg)
+                    }
+                    question?.correct?.let { answer(it, R.drawable.correct_option_bg) }
+
+                    if (mCurrentPosition == mQuestionList?.size) {
+                        binding.btnSubmit.text = getString(R.string.finish)
+                    } else {
+                        binding.btnSubmit.text = getString(R.string.next)
+                    }
+                    mSelectedPosition = 0
+                }
+            }
+        }
+    }
+
+    private fun answer(answer: Int, drawable: Int) {
+        when (answer) {
+            1 -> {
+                binding.tvOption1.background = ContextCompat.getDrawable(this, drawable)
+            }
+            2 -> {
+                binding.tvOption2.background = ContextCompat.getDrawable(this, drawable)
+            }
+            3 -> {
+                binding.tvOption3.background = ContextCompat.getDrawable(this, drawable)
+            }
+            4 -> {
+                binding.tvOption4.background = ContextCompat.getDrawable(this, drawable)
             }
         }
     }

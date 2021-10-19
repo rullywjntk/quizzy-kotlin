@@ -6,4 +6,6 @@
     <string name="start">start</string>
     <string name="what_country_does_this_flag_belong_to">What country does this flag belong to?</string>
     <string name="submit">Submit</string>
+    <string name="finish">Finish</string>
+    <string name="next">go to next question</string>
 </resources>

@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android/AndroidStudioProjects/Quizzy/app/src/main/res/drawable/correct_option_bg.xml" value="0.23489583333333333" />
         <entry key="..\:/Android/AndroidStudioProjects/Quizzy/app/src/main/res/drawable/option_bg.xml" value="0.403125" />
         <entry key="..\:/Android/AndroidStudioProjects/Quizzy/app/src/main/res/drawable/selected_option_bg.xml" value="0.23489583333333333" />
+        <entry key="..\:/Android/AndroidStudioProjects/Quizzy/app/src/main/res/drawable/wrong_option_bg.xml" value="0.23489583333333333" />
         <entry key="..\:/Android/AndroidStudioProjects/Quizzy/app/src/main/res/layout/activity_main.xml" value="0.2957427536231884" />
         <entry key="..\:/Android/AndroidStudioProjects/Quizzy/app/src/main/res/layout/activity_qusestion.xml" value="0.38697916666666665" />
       </map>
